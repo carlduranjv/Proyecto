@@ -1,0 +1,58 @@
+
+<?php
+require 'Header.php';
+?>
+      <div class="content-wrapper">
+        
+
+        <section class="content">
+            <div class="row">
+              <div class="col-md-12">
+                  <div class="box">
+                    <div class="box-header with-border">
+                          <h1 class="box-title">Tipo de Documento <button class="btn btn-success" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
+                        <div class="box-tools pull-right">
+                        </div>
+                    </div>
+
+                    <div class="panel-body table-responsive"id="listadoregistros">
+                        <table id="tblistado" class="table table-striped table-bordered table-condensed table-hover">
+                          <thead>
+                            <th>Opciones</th>
+                            <th>Nombre</th>
+                            <th>Estado</th>
+                          </thead>
+                          <tbody></tbody>
+                          <tfoot>
+                            <th>Opciones</th>
+                            <th>Nombre</th>
+                            <th>Estado</th>
+                          </tfoot>
+                        </table>
+                    </div>
+
+                    <div class="panel-body" style="height: 700px;" id="formularioregistros">
+                        <form name="formulario" id="formulario" method="POST">
+                          <div class="form-group col-lg-6 col-md-6 col-ms-6 col-xs-12">
+                            <label>Nombre de Documento</label>
+                            <input type="hidden" name="IdTipoDocumento" id="IdTipoDocumento">
+                            <input type="text" onkeyup="mayus(this);" class="form-control" name="NombreDocumento" id="NombreDocumento" maxlength="45" placeholder="Nombre de Documento" required>
+                          </div>
+                        
+                          <div class="form-group col-lg-12 col-md-12 col-ms-12">
+                            <button class="btn btn-primary" type="sumit" name="btnGuardar" id="btnGuardar"><i class="fa fa-save"></i>Guardar</button>
+                            <button class="btn btn-danger" type="button" onclick="cancelarform()"><i class="fa fa-arrow-circle-left"></i>Cancelar</button>
+                          </div>
+                        </form>
+                    </div>
+
+                  </div>
+              </div>
+          </div>
+      </section>
+
+    </div>
+                 <?php
+require 'Footer.php';
+?>
+<script type="text/javascript" src="../Scripts/tipodocumento.js"></script>
