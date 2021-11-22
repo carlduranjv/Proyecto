@@ -83,6 +83,15 @@ switch ($_GET['Operacion'])
 	        $Respuesta=$usuario->desactivar($IdUsuario);
     		echo $Respuesta ? "Usuario Desactivado con Exito!" : "Falló al Desactivar el Usuario";
 		  break;
-}
 
+   case 'permiso':
+   require_once "../Models/Permiso.php";
+   $permiso= new Permiso();
+   $Respuesta = $permiso->listar();
+   while ($registro= $Respuesta->fetch_object())
+   {
+    echo '<li> <input type="checkbox" style="width : 20px; heigth : 8px" name="permiso[]" value= "'.$registro->IdPermiso.'">'.$registro->NombrePermiso.'</li>';
+   }
+   break; 
+ }
  ?>

@@ -78,7 +78,7 @@ require 'Header.php';
                           <div class="form-group col-lg-12 col-md-12 col-ms-12 col-xs-12"></div>
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Permisos:</label>
-                            <ul style="list-style: none;" id="Permisos">
+                            <ul style="list-style: none;" id="Permisos" name ="Permisos">
                               
                             </ul>
                           </div>
@@ -87,7 +87,7 @@ require 'Header.php';
                             <label>Imagen:</label>
                             <input type="file" class="form-control" name="Imagen" id="Imagen">
                             <input type="hidden" name="ImagenActual" id="ImagenActual">
-                            <img src="" width="150px" height="120px" id="ImagenMuestra">
+                            <img src="" width="150px" height="120px" name="ImagenMuestra" id="ImagenMuestra">
                           </div>
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>

@@ -8,6 +8,12 @@ $("#formulario").on("submit", function(e)
 {
 	guardaryeditar(e);
 })
+
+$("#ImagenMuestra").hide();
+$.post("../Ajax/usuario.php?Operacion=permiso", function(r)
+{
+	$("#Permisos").html(r);
+});
 }
 
 function mayus(m) {
@@ -24,7 +30,7 @@ function limpiar ()
 	$("#Telefono").val("");
 	$("#Login").val("");
 	$("#Password").val("");
-	$("#Imagen").val("");
+    $("#Imagen").val("");
 }
 
 function mostrarform(flag)
@@ -105,19 +111,21 @@ function guardaryeditar(e)
 
 function mostrar(IdUsuario)
 {
-	$.post("../Ajax/usuario.php?Operacion=mostrar", {IdUsuario : IdUsuario}, function (data, status)
+	$.post("../Ajax/usuario.php?Operacion=mostrar", {IdUsuario : IdUsuario}, function (datos, status)
 {
-     data = JSON.parse(data);
+     datos = JSON.parse(datos);
      mostrarform(true);
-     $("#IdUsuario").val(data.IdUsuario);
-     $("#Nombre").val(data.Nombre);
-     $("#Apellido").val(data.Apellido);
-     $("#Correo").val(data.Correo);
-     $("#Cargo").val(data.Cargo);
-     $("#Telefono").val(data.Telefono);
-     $("#Login").val(data.Login);
-     $("#Password").val(data.Password);
-     $("#Imagen").val(data.Imagen);
+     $("#IdUsuario").val(datos.IdUsuario);
+     $("#Nombre").val(datos.Nombre);
+     $("#Apellido").val(datos.Apellido);
+     $("#Correo").val(datos.Correo);
+     $("#Cargo").val(datos.Cargo);
+     $("#Telefono").val(datos.Telefono);
+     $("#Login").val(datos.Login);
+     $("#Password").val(datos.Password);
+     $("#ImagenMuestra").show();
+	 $("#ImagenMuestra").attr("src","../Files/Usuarios/"+datos.Imagen); 
+	 $("#ImagenActual").val(datos.Imagen);
 }
 );
 }	
