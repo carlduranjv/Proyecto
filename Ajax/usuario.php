@@ -27,7 +27,7 @@ switch ($_GET['Operacion'])
            "4"=>$reg->Telefono,
            "5"=>$reg->Login,
            "6"=>$reg->Password,
-           "7"=>$reg->Imagen,
+           "7"=>"<img src ='../Files/Usuarios/".$reg->Imagen."' height='50px' width='50px' >",
            "8"=>($reg->Condicion)?'<button class="btn btn-warning" onClick="mostrar('.$reg->IdUsuario.')"><i class="fas fa-edit"></i></button>'.'<button class="btn btn-danger" onClick="desactivar('.$reg->IdUsuario.')"><i class="fas fa-close"></i></button>':
            '<button class="btn btn-warning" onClick="mostrar('.$reg->IdUsuario.')"><i class="fas fa-edit"></i></button>'.'<button class="btn btn-primary" onClick="activar('.$reg->IdUsuario.')"><i class="fas fa-check"></i></button>',
            "9"=>($reg->Condicion)?'<span class="label bg-green">Activado</span>':
@@ -49,6 +49,19 @@ switch ($_GET['Operacion'])
 
     case 'guardaryeditar':
     	
+      if (!file_exists($_FILES['Imagen']['tmp_name'])|| !is_uploaded_file($_FILES['Imagen']['tmp_name']))
+       {
+       $Imagen=$_POST["ImagenActual"];
+      }
+      else
+      {
+        $ext=explode(".", $_FILES['Imagen']["name"]);
+        if($_FILES['Imagen']['type']=="image/jpg" || $_FILES['Imagen']['type']=="image/jpeg" || $_FILES['Imagen']['type']=="image/png")
+        {
+          $Imagen=round(microtime(true)) . '.' . end($ext);
+          move_uploaded_file($_FILES["Imagen"]["tmp_name"], "../Files/Usuarios/" . $Imagen);
+        }
+      }
     	if (empty($IdUsuario)) 
     	{
     		$Respuesta=$usuario->insertar($Nombre, $Apellido, $Correo, $Cargo, $Telefono, $Login, $Password, $Imagen);
